@@ -1,0 +1,102 @@
+\documentclass{article}[12pt]
+\usepackage{amsmath}
+\usepackage{amsbsy} %%iranaippoi%%
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amscd}
+%%\usepackage{url}
+\usepackage[top=25truemm,bottom=25truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[all]{xy}
+%%\usepackage[dvipdfm,citecolor]{hyperref}
+
+\author{Ryo Ochi}
+\title{Notes on discrete groups and Furstenberg boundaries}
+
+\input{./KKkato.tex}
+\begin{document}
+\maketitle
+\tableofcontents
+%%%
+Let $G$ be  a (countable) discrete group.
+\section{Introduction}
+We will argue C*-simplicity.
+So, we recall group C*-algebras.
+\begin{definition}
+  Let $\lambda$ be a left regular representation of $G$,
+  i.e.
+  \begin{align*}
+    G \ni g \mapsto \lambda_g \, [ = \delta_h \mapsto \delta_{gh} ] \in B(l^2(G)).
+  \end{align*}
+  We define the reduced group C*-algebra $C_r^*(G)$ by the closure of $ \overline{\rm span}\{\lambda_g\}_{g \in G}$.
+
+  For any descrete group $G$, the reduced C*-algebra $C_r^*(G)$ has a canonical tracial state $\tau_0 := \< \dot \delta_e, \delta_e \>$.
+\end{definition}
+
+\begin{definition}
+  A group $G$ is called C*-simple, if $C_r^*(G)$ is simple,
+  i.e.
+  $C_r^*(G)$ has no closed two-sided ideal.
+
+  A group $G$ has the unique trace property if $C_r^*(G)$ has a unique trace.
+\end{definition}
+
+Powers \cite{powers1975simplicity} proved that free groups is C*-simple.
+\begin{theorem}[\cite{powers1975simplicity}]
+  Let $\F_2$ be a free group of rank $2$.
+  For any $a \in C_r^*(G)$ and any $ \varepsilon > 0$,
+  there are $g_i, \ldots, g_n \in G$ and a partition of unity $\sum_{i=1}^n c_i = 1$ s.t.
+  \begin{align*}
+    \| \tau_0(a) - \sum_{i=1}^n c_i \lambda_{g_i} a \lambda_{g_i}^* \| < \varepsilon
+  \end{align*}
+  In particular, $C_r^*(\F_2)$ is simple and has a unique trace.
+  In other words, $\F_2$ is C*-simple and has the unique trace property.
+\end{theorem}
+
+Variants of Powers' proof became the main method for establishing these property.
+Many many results.
+
+Kalantar and Kennedy \cite{Kalantar2017boundaries} made the new method for proving C*-simplicity.
+\begin{theorem}[\cite{Kalantar2017boundaries}]
+  Let $G$ be a discrete group and $\d_FG$ be the Furstenberg boundary of $G$.
+  The followings are equivalent.
+  \begin{enumerate}
+  \item $G$ is C*-simple;
+  \item $C(\d_FG) \rtimes_r G$ is simple;
+  \item $C(B) \rtimes_r G$ is simple for some $G$-boundary $B$;
+  \item $G$ acts on $\d_FG$ topologically freely;
+    \item $G$ acts on $B$ topologically freely for some $G$-boundary $B$:
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}[\cite{breuillard2017c}]
+  $G$ acts on $\d_F G$ freely if and only if $G$ acts on $B$ topologically freely for some $G$-boundary $B$.
+\end{remark}
+
+So, in order to prove C*-simplicity, it suffices to find the boundary on which $G$ acts topologically freely.
+For example, for amalgamated free products or HNN-extension, we probably consider the ideal boundary of its Bass-Serre tree.
+So, many existing results are proved more simplily.
+
+\section{G-boundary}
+
+\begin{definition}
+  Let $G$ be a group and $X$ be a locally compact group on which $G$ acts.
+  The action of $G$ is called minimal if $X$ has no non-trivial $G$-invariant closed subspace,
+  that is for any $x \in X$, $\overline{G\cdot x} = X$.
+  The action of $G$ is called strongly proximal if for any $ \mu \in \P(X)$, $\overline{G\cdot \mu}$ has a dirac mass,
+  that is for any $ \mu \in \P(X)$, there exist $x \in X$ and a net $ g_i \in G$ s.t.
+  for any $f \in C_0(X)$,
+  \begin{align*}
+    g_i.\mu(f) = \mu(g_i^{-1}.f) \rightarrow f(x).
+  \end{align*}
+  $X$ is called G-boundary if $X$ is compact and the action of $G$ is minimal and strongly proximal.
+\end{definition}
+
+\begin{example}[$\F_2$]
+  We consider a Caley graph of $\F_2$.
+  Let $a, b$ be generators of $\F_2$.
+  Let $V(T)$ be a set of all words of $\F_2$ and $E(T) = \{ (v,w) \in V(T)\times V(T) |$ there exists $ x \in \{a, a^{-1}, b, b^{-1}\}$ s.t. $v = wx \}$.
+\end{example}
+\bibliographystyle{alpha}
+\bibliography{santorini}
+\end{document}
